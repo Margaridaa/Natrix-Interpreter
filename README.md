@@ -88,4 +88,4 @@ make free
 
 Cada uma destas variações corresponde à execução de um ficheiro de teste.
 
-O ficheiro `free.nx` poderá ser utilizado pelo utilizador caso pretenda programar na linguagem `Natrix`.
+O ficheiro `free.nx` poderá ser utilizado pelo utilizador caso pretenda programar na linguagem `Natrix`, o qual poderá ser executado com recurso ao comando `make free`.
