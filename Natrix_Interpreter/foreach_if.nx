@@ -1,0 +1,3 @@
+var x : int = 1;
+
+foreach i in [0 .. 2] do { if(not (x==10)) then { x := let y = x in y+i; print(x); print("\n"); } else { x := let y = x in y-i; } }

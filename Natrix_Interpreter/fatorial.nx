@@ -1,0 +1,9 @@
+var n : int = 5 ;
+var fat : int = 1;
+
+foreach n in [1 .. n] do { fat := fat * n; }
+
+print("Fatorial de 5 = ");
+print(fat);
+print("\n");
+

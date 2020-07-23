@@ -1,0 +1,7 @@
+var x : int = 2;
+var y : int = 10;
+
+x := x * y;
+
+print(x);
+print(x/0);

@@ -1,0 +1,4 @@
+typee t = [(-1) .. (-2)];
+type arr = array t of int;
+
+

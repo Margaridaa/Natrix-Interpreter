@@ -1,0 +1,543 @@
+
+** Conflict (reduce/reduce) in state 153.
+** Tokens involved: VAR TYPE PRINT NOT MINUS MININT MAXINT LSQ LP LET IF IDENT FOREACH DEF CST
+** The following explanations concentrate on token VAR.
+** This state is reached from file after reading:
+
+option(NEWLINE) DEF ident LP loption(separated_nonempty_list(COMMA,ident)) RP COLON simple_stmt 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF // lookahead token appears because nonempty_list(stmt) can begin with VAR
+                def list(def) // lookahead token is inherited because list(def) can vanish
+                DEF ident LP loption(separated_nonempty_list(COMMA,ident)) RP COLON suite // lookahead token is inherited
+                                                                                    (?)
+
+** In state 153, looking ahead at VAR, reducing production
+** stmt2 -> simple_stmt 
+** is permitted because of the following sub-derivation:
+
+nonempty_list(stmt2) // lookahead token is inherited
+stmt2 // lookahead token is inherited
+simple_stmt . 
+
+** In state 153, looking ahead at VAR, reducing production
+** suite -> simple_stmt 
+** is permitted because of the following sub-derivation:
+
+simple_stmt . 
+
+** Conflict (shift/reduce) in state 137.
+** Tokens involved: MINUS LSQ
+** The following explanations concentrate on token MINUS.
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) IF expr THEN LBRACKET expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          IF expr THEN LBRACKET stmt_block RBRACKET ELSE LBRACKET stmt_block RBRACKET NEWLINE 
+                                                nonempty_list(stmt2) 
+                                                (?)
+
+** In state 137, looking ahead at MINUS, shifting is permitted
+** because of the following sub-derivation:
+
+stmt2 
+simple_stmt 
+expr 
+expr . MINUS expr 
+
+** In state 137, looking ahead at MINUS, reducing production
+** simple_stmt -> expr 
+** is permitted because of the following sub-derivation:
+
+stmt2 nonempty_list(stmt2) // lookahead token appears because nonempty_list(stmt2) can begin with MINUS
+simple_stmt // lookahead token is inherited
+expr . 
+
+** Conflict (shift/reduce) in state 125.
+** Tokens involved: LSQ LP
+** The following explanations concentrate on token LSQ.
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) ident 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          (?)
+
+** In state 125, looking ahead at LSQ, reducing production
+** expr -> ident 
+** is permitted because of the following sub-derivation:
+
+expr 
+expr LSQ expr RSQ // lookahead token appears
+ident . 
+
+** In state 125, looking ahead at LSQ, shifting is permitted
+** because of the following sub-derivation:
+
+ident . LSQ expr RSQ COLON EQUAL expr SEMICOLON 
+
+** Conflict (shift/reduce) in state 120.
+** Tokens involved: VAR TYPE PRINT NOT MINUS MININT MAXINT LSQ LP LET IF IDENT FOREACH CST
+** The following explanations concentrate on token VAR.
+** This state is reached from file after reading:
+
+option(NEWLINE) DEF ident LP loption(separated_nonempty_list(COMMA,ident)) RP COLON stmt2 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+(?)
+
+** In state 120, looking ahead at VAR, reducing production
+** nonempty_list(stmt2) -> stmt2 
+** is permitted because of the following sub-derivation:
+
+option(NEWLINE) list(def) nonempty_list(stmt) EOF // lookahead token appears because nonempty_list(stmt) can begin with VAR
+                def list(def) // lookahead token is inherited because list(def) can vanish
+                DEF ident LP loption(separated_nonempty_list(COMMA,ident)) RP COLON suite // lookahead token is inherited
+                                                                                    nonempty_list(stmt2) // lookahead token is inherited
+                                                                                    stmt2 . 
+
+** In state 120, looking ahead at VAR, shifting is permitted
+** because of the following sub-derivation:
+
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                def list(def) 
+                DEF ident LP loption(separated_nonempty_list(COMMA,ident)) RP COLON suite 
+                                                                                    nonempty_list(stmt2) 
+                                                                                    stmt2 nonempty_list(stmt2) 
+                                                                                          stmt2 
+                                                                                          stmt 
+                                                                                          . VAR ident COLON INT EQUAL expr SEMICOLON NEWLINE 
+
+** Conflict (shift/reduce) in state 65.
+** Token involved: DOTDOT
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) NOT expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 65, looking ahead at DOTDOT, reducing production
+** expr -> NOT expr 
+** is permitted because of the following sub-derivation:
+
+expr DOTDOT expr // lookahead token appears
+NOT expr . 
+
+** In state 65, looking ahead at DOTDOT, shifting is permitted
+** because of the following sub-derivation:
+
+NOT expr 
+    expr . DOTDOT expr 
+
+** Conflict (shift/reduce) in state 64.
+** Token involved: DOTDOT
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) MINUS expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 64, looking ahead at DOTDOT, reducing production
+** expr -> MINUS expr 
+** is permitted because of the following sub-derivation:
+
+expr DOTDOT expr // lookahead token appears
+MINUS expr . 
+
+** In state 64, looking ahead at DOTDOT, shifting is permitted
+** because of the following sub-derivation:
+
+MINUS expr 
+      expr . DOTDOT expr 
+
+** Conflict (shift/reduce) in state 62.
+** Tokens involved: TIMES PLUS OR MOD MINUS LSQ DOTDOT DIV CMP AND
+** The following explanations concentrate on token TIMES.
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) LSQ expr DOTDOT expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 62, looking ahead at TIMES, shifting is permitted
+** because of the following sub-derivation:
+
+LSQ expr DOTDOT expr RSQ 
+                expr . TIMES expr 
+
+** In state 62, looking ahead at TIMES, reducing production
+** expr -> expr DOTDOT expr 
+** is permitted because of the following sub-derivation:
+
+LSQ expr DOTDOT expr RSQ 
+    expr TIMES expr // lookahead token appears
+    expr DOTDOT expr . 
+
+** Conflict (shift/reduce) in state 57.
+** Tokens involved: TIMES PLUS OR MOD MINUS LSQ DOTDOT DIV CMP AND
+** The following explanations concentrate on token TIMES.
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) LET ident EQUAL expr IN expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 57, looking ahead at TIMES, shifting is permitted
+** because of the following sub-derivation:
+
+LET ident EQUAL expr IN expr 
+                        expr . TIMES expr 
+
+** In state 57, looking ahead at TIMES, reducing production
+** expr -> LET ident EQUAL expr IN expr 
+** is permitted because of the following sub-derivation:
+
+expr TIMES expr // lookahead token appears
+LET ident EQUAL expr IN expr . 
+
+** Conflict (shift/reduce) in state 52.
+** Token involved: DOTDOT
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) expr AND expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 52, looking ahead at DOTDOT, reducing production
+** expr -> expr AND expr 
+** is permitted because of the following sub-derivation:
+
+expr DOTDOT expr // lookahead token appears
+expr AND expr . 
+
+** In state 52, looking ahead at DOTDOT, shifting is permitted
+** because of the following sub-derivation:
+
+expr AND expr 
+         expr . DOTDOT expr 
+
+** Conflict (shift/reduce) in state 50.
+** Token involved: DOTDOT
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) expr CMP expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 50, looking ahead at DOTDOT, reducing production
+** expr -> expr CMP expr 
+** is permitted because of the following sub-derivation:
+
+expr DOTDOT expr // lookahead token appears
+expr CMP expr . 
+
+** In state 50, looking ahead at DOTDOT, shifting is permitted
+** because of the following sub-derivation:
+
+expr CMP expr 
+         expr . DOTDOT expr 
+
+** Conflict (shift/reduce) in state 48.
+** Token involved: DOTDOT
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) expr DIV expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 48, looking ahead at DOTDOT, reducing production
+** expr -> expr DIV expr 
+** is permitted because of the following sub-derivation:
+
+expr DOTDOT expr // lookahead token appears
+expr DIV expr . 
+
+** In state 48, looking ahead at DOTDOT, shifting is permitted
+** because of the following sub-derivation:
+
+expr DIV expr 
+         expr . DOTDOT expr 
+
+** Conflict (shift/reduce) in state 46.
+** Token involved: DOTDOT
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) expr MINUS expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 46, looking ahead at DOTDOT, reducing production
+** expr -> expr MINUS expr 
+** is permitted because of the following sub-derivation:
+
+expr DOTDOT expr // lookahead token appears
+expr MINUS expr . 
+
+** In state 46, looking ahead at DOTDOT, shifting is permitted
+** because of the following sub-derivation:
+
+expr MINUS expr 
+           expr . DOTDOT expr 
+
+** Conflict (shift/reduce) in state 44.
+** Token involved: DOTDOT
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) expr OR expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 44, looking ahead at DOTDOT, reducing production
+** expr -> expr OR expr 
+** is permitted because of the following sub-derivation:
+
+expr DOTDOT expr // lookahead token appears
+expr OR expr . 
+
+** In state 44, looking ahead at DOTDOT, shifting is permitted
+** because of the following sub-derivation:
+
+expr OR expr 
+        expr . DOTDOT expr 
+
+** Conflict (shift/reduce) in state 42.
+** Tokens involved: TIMES PLUS OR MOD MINUS LSQ DOTDOT DIV CMP AND
+** The following explanations concentrate on token TIMES.
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) expr DOTDOT expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 42, looking ahead at TIMES, shifting is permitted
+** because of the following sub-derivation:
+
+expr DOTDOT expr 
+            expr . TIMES expr 
+
+** In state 42, looking ahead at TIMES, reducing production
+** expr -> expr DOTDOT expr 
+** is permitted because of the following sub-derivation:
+
+expr TIMES expr // lookahead token appears
+expr DOTDOT expr . 
+
+** Conflict (shift/reduce) in state 40.
+** Token involved: DOTDOT
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) expr MOD expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 40, looking ahead at DOTDOT, reducing production
+** expr -> expr MOD expr 
+** is permitted because of the following sub-derivation:
+
+expr DOTDOT expr // lookahead token appears
+expr MOD expr . 
+
+** In state 40, looking ahead at DOTDOT, shifting is permitted
+** because of the following sub-derivation:
+
+expr MOD expr 
+         expr . DOTDOT expr 
+
+** Conflict (shift/reduce) in state 38.
+** Token involved: DOTDOT
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) expr PLUS expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 38, looking ahead at DOTDOT, reducing production
+** expr -> expr PLUS expr 
+** is permitted because of the following sub-derivation:
+
+expr DOTDOT expr // lookahead token appears
+expr PLUS expr . 
+
+** In state 38, looking ahead at DOTDOT, shifting is permitted
+** because of the following sub-derivation:
+
+expr PLUS expr 
+          expr . DOTDOT expr 
+
+** Conflict (shift/reduce) in state 33.
+** Token involved: DOTDOT
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) expr TIMES expr 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          simple_stmt NEWLINE 
+                          expr 
+                          (?)
+
+** In state 33, looking ahead at DOTDOT, reducing production
+** expr -> expr TIMES expr 
+** is permitted because of the following sub-derivation:
+
+expr DOTDOT expr // lookahead token appears
+expr TIMES expr . 
+
+** In state 33, looking ahead at DOTDOT, shifting is permitted
+** because of the following sub-derivation:
+
+expr TIMES expr 
+           expr . DOTDOT expr 
+
+** Conflict (shift/reduce) in state 26.
+** Token involved: LP
+** This state is reached from file after reading:
+
+option(NEWLINE) list(def) IF expr THEN LBRACKET NOT ident 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+file 
+option(NEWLINE) list(def) nonempty_list(stmt) EOF 
+                          stmt 
+                          IF expr THEN LBRACKET stmt_block RBRACKET ELSE LBRACKET stmt_block RBRACKET NEWLINE 
+                                                nonempty_list(stmt2) 
+                                                (?)
+
+** In state 26, looking ahead at LP, reducing production
+** expr -> ident 
+** is permitted because of the following sub-derivation:
+
+stmt2 nonempty_list(stmt2) // lookahead token appears because nonempty_list(stmt2) can begin with LP
+simple_stmt // lookahead token is inherited
+expr // lookahead token is inherited
+NOT expr // lookahead token is inherited
+    ident . 
+
+** In state 26, looking ahead at LP, shifting is permitted
+** because of the following sub-derivation:
+
+stmt2 
+simple_stmt 
+expr 
+NOT expr 
+    ident . LP loption(separated_nonempty_list(COMMA,expr)) RP 

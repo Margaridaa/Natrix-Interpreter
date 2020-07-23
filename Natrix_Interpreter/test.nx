@@ -1,0 +1,38 @@
+print("\n-------------------- Teste exemplo ------------------------\n");
+type t = [0 .. 5];
+type arr = array t of int;
+
+var a : arr filled by 0;
+
+var min : int = maxint;
+a[0] := 0 ;
+a[1] := 5 ;
+a[2] := 3 ;
+a[3] := 9 ;
+a[4] := 2 ;
+a[5] := 6 ;
+
+var x : int = 10;
+x := let y = 9 + x in y*x;
+print("\nResultado do let in = ");
+print(x);
+
+print("\nElementos do array: \n");
+foreach i in [0 .. 5] do { print(a[i]); print("  "); }
+
+print("\n-----------------------------------------------------------\n");
+print("Para mais testes, experimente as opções:\n");
+print("     make relatorio (referido no relatorio)\n");
+print("     make free (ficheiro livre de ser editado)\n");
+print("     make maior_elemento (relativo a este mesmo array)\n");
+print("     make menor_elemento (relativo a este mesmo array)\n");
+print("     make fatorial (fatorial de 5)\n");
+print("     make size (testa o funcionamento da chamada 'size'\n");
+print("     make foreach_if (demostra uma condição 'if' aninhada numa condição 'foreach')\n");
+print("     make div_zero (teste para assinalar erro no caso de divisão por 0)\n");
+print("     make neg_interval (teste para assinalar erro caso um intervalo contenha inteiros negativos)\n");
+print("     make interval_decr (teste para assinalar erro sobre um intervalo em ordem descendente)\n");
+print("     make unbound_var (teste para assinalar erro caso exista uma variável não acoplada)\n");
+print("     make sintaxe (erro de sintaxe)\n");
+print("     make lexico (erro lexico)\n");
+

@@ -1,0 +1,4 @@
+print("Ficheiro de teste. Experimente Natrix!\n");
+
+type x = [15 .. 20];
+print(x);
