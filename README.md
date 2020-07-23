@@ -69,22 +69,20 @@ O utilizador poderá ter de instalar a biblioteca `num`:
 ### Execução
 
 A diretoria `Natrix_Interpreter` fornece programas exemplo, que poderão ser executados recorrendo aos comandos:
-```
-make relatorio
-make maior_elemento
-make menor_elemento
-make fatorial
-make foreach_if
-make size
-make size_error
-make div_zero
-make neg_interval
-make unbound_var
-make interval_decr
-make sintaxe
-make lexico
-make free
-```
+`make relatorio`
+`make maior_elemento`
+`make menor_elemento`
+`make fatorial`
+`make foreach_if`
+`make size`
+`make size_error`
+`make div_zero`
+`make neg_interval`
+`make unbound_var`
+`make interval_decr`
+`make sintaxe`
+`make lexico`
+`make free`
 
 Cada uma destas variações corresponde à execução de um ficheiro de teste.
 
